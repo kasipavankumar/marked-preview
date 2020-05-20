@@ -1,0 +1,17 @@
+@use './partials/reset';
+@use './partials/variables';
+
+body {
+    margin: 0;
+    font-family: var(--font-stack-regular);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    code {
+        font-family: var(--font-stack-monospace);
+        font-size: 80%;
+        background-color: #999;
+        border-radius: 2px;
+        padding: 0.2rem;
+    }
+}

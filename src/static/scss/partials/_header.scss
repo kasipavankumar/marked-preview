@@ -1,0 +1,29 @@
+@use "./spacing";
+
+$header-font-sizes: (
+    '1': 2.25rem,
+    '2': 1.62671rem,
+    '3': 1.38316rem,
+    '4': 1rem,
+    '5': 0.85028rem,
+    '6': 0.78405rem,
+);
+
+@mixin header-styles($font-size, $font-weight: bold) {
+    @include spacing.margin-reset(0, 0, 1.45rem, 0);
+    @include spacing.padding-reset(0, 0, 0, 0);
+
+    font-size: $font-size;
+    font-weight: $font-weight;
+
+    color: inherit;
+    text-rendering: geometricPrecision;
+
+    line-height: 1.1;
+}
+
+@each $level, $size in $header-font-sizes {
+    h#{$level} {
+        @include header-styles($size);
+    }
+}

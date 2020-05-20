@@ -1,0 +1,31 @@
+.App {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding: 1rem;
+
+    a {
+        text-decoration: none;
+        color: black;
+        box-shadow: 0 1.5px 0 0 black;
+
+        &:hover {
+            box-shadow: none;
+        }
+    }
+}
+
+#editor {
+    width: 100%;
+}
+
+img {
+    object-fit: cover;
+    width: 100%;
+}
+
+@media screen and (max-width: 660px) {
+    #editor {
+        height: 50vh;
+    }
+}

@@ -1,0 +1,27 @@
+/// Creates margin reset.
+@mixin margin-reset($top, $right, $bottom, $left) {
+    $sides: (
+        'top': $top,
+        'right': $right,
+        'bottom': $bottom,
+        'left': $left,
+    );
+
+    @each $side, $value in $sides {
+        margin-#{$side}: $value;
+    }
+}
+
+/// Creates padding reset.
+@mixin padding-reset($top, $right, $bottom, $left) {
+    $sides: (
+        'top': $top,
+        'right': $right,
+        'bottom': $bottom,
+        'left': $left,
+    );
+
+    @each $side, $value in $sides {
+        padding-#{$side}: $value;
+    }
+}

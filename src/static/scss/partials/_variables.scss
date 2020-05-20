@@ -1,0 +1,7 @@
+@use './fonts';
+
+body {
+    --font-stack-regular: 'Inter', 'Roboto', 'IBM Plex Sans', sans-serif;
+    --font-stack-monospace: 'Source Code Pro', 'Roboto Mono', 'IBM Plex Mono',
+        monospace;
+}
