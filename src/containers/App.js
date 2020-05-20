@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import marked from 'marked'
 import DOMPurify from 'dompurify'
 
@@ -24,25 +24,29 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
-                {/* This the editor area. */}
-                <textarea
-                    id="editor"
-                    defaultValue={this.state.editorContent}
-                    onChange={this.onEditorContentChange}></textarea>
+            <Fragment>
+                <h1 className="title">Markdown Preview</h1>
+                <div className="App">
+                    {/* This the editor area. */}
+                    <textarea
+                        id="editor"
+                        defaultValue={this.state.editorContent}
+                        onChange={this.onEditorContentChange}></textarea>
 
-                {/* This is where the markdown preview will show up. */}
-                <div
-                    id="preview"
-                    dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(
-                            marked(this.state.editorContent, {
-                                gfm: true,
-                                breaks: true,
-                            })
-                        ),
-                    }}></div>
-            </div>
+                    {/* This is where the markdown preview will show up. */}
+                    <div
+                        id="preview"
+                        dangerouslySetInnerHTML={{
+                            __html: DOMPurify.sanitize(
+                                marked(this.state.editorContent, {
+                                    gfm: true,
+                                    breaks: true,
+                                })
+                            ),
+                        }}
+                    />
+                </div>
+            </Fragment>
         )
     }
 }
