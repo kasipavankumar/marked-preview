@@ -6,7 +6,9 @@ export const placeholderText = `# Welcome to Markdown Preview
 \`#include<iostream>\`
 
 1. AMD Ryzen 5 2600
-2. Nvidia RTX 2080Ti
+2. Asus ROG Strix B450
+3. Nvidia RTX 2080Ti
+4. G. Skill TridentZ 32GB DDR4
 
 > Expect the unexpected.
 
