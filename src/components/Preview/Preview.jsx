@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import marked from 'marked'
 import DOMPurify from 'dompurify'
@@ -19,6 +20,12 @@ const Preview = ({ content, previewContent, showPreview }) => {
     }
 
     return <PreviewDesktop content={content} previewContent={previewContent} />
+}
+
+Preview.propTypes = {
+    content: PropTypes.string.isRequired,
+    previewContent: PropTypes.string.isRequired,
+    showPreview: PropTypes.bool.isRequired,
 }
 
 const PreviewDesktop = ({ content, previewContent }) => (
@@ -53,6 +60,11 @@ const PreviewDesktop = ({ content, previewContent }) => (
     </Fragment>
 )
 
+PreviewDesktop.propTypes = {
+    content: PropTypes.string.isRequired,
+    previewContent: PropTypes.string.isRequired,
+}
+
 const PreviewMobile = ({ content }) => (
     <Fragment>
         <div
@@ -69,5 +81,9 @@ const PreviewMobile = ({ content }) => (
         />
     </Fragment>
 )
+
+PreviewMobile.propTypes = {
+    content: PropTypes.string.isRequired,
+}
 
 export default connect(mapStateToProps)(Preview)

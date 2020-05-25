@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import AceEditor from 'react-ace'
 
@@ -17,8 +18,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onEditorChange: (value) => dispatch(setEditorContent(value)),
-        setPreviewContent: (event) =>
-            dispatch(setPreviewContent(event.target.value)),
+        setPreviewContent: (event) => dispatch(setPreviewContent(event.target.value)),
     }
 }
 
@@ -97,6 +97,13 @@ class Editor extends Component {
             </Fragment>
         )
     }
+}
+
+Editor.propTypes = {
+    setEditorContent: PropTypes.func.isRequired,
+    setPreviewContent: PropTypes.func.isRequired,
+    onEditorChange: PropTypes.func.isRequired,
+    editorBodyContent: PropTypes.string.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor)

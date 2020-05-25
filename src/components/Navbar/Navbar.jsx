@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { connect, useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -11,11 +12,14 @@ import IconButton from '@material-ui/core/IconButton'
 import SettingsIcon from '@material-ui/icons/Settings'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 
+// Shared components.
 import EditorThemeSelector from '../Editor/Theme/EditorThemeSelector'
 
-import { clearEditor, togglePreview } from '../../redux/actions'
+// Utility functions.
+import { downloadControllerMarkdown } from '../../utils/DownloadController'
 
-import './Navbar.scss'
+// Redux.
+import { clearEditor, togglePreview } from '../../redux/actions'
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -60,15 +64,20 @@ const Navbar = (props) => {
 
     const currentEditorContent = useSelector((state) => state.editor.content)
 
-    const downloadMarkdown = () => {
-        const element = document.createElement('a')
-        const file = new Blob([currentEditorContent], {
-            type: 'text/markdown',
-        })
-        element.href = URL.createObjectURL(file)
-        element.download = 'test.md'
-        document.body.appendChild(element)
-        element.click()
+    // const downloadMarkdown = () => {
+    //     const element = document.createElement('a')
+    //     const file = new Blob([currentEditorContent], {
+    //         type: 'text/markdown',
+    //     })
+    //     element.href = URL.createObjectURL(file)
+    //     element.download = 'test.md'
+    //     document.body.appendChild(element)
+    //     element.click()
+    //     handleClose()
+    // }
+
+    const handleDownloadMarkdown = () => {
+        downloadControllerMarkdown(currentEditorContent)
         handleClose()
     }
 
@@ -103,22 +112,22 @@ const Navbar = (props) => {
                             }}
                         />
                     </IconButton>
-                    <Menu
-                        anchorEl={anchorElement}
-                        open={open}
-                        onClose={handleClose}>
+                    <Menu anchorEl={anchorElement} open={open} onClose={handleClose}>
                         <EditorThemeSelector />
-                        <MenuItem onClick={() => downloadMarkdown()}>
+                        <MenuItem onClick={() => handleDownloadMarkdown()}>
                             Download Markdown
                         </MenuItem>
-                        <MenuItem onClick={handleClearEditor}>
-                            Clear Editor
-                        </MenuItem>
+                        <MenuItem onClick={handleClearEditor}>Clear Editor</MenuItem>
                     </Menu>
                 </Toolbar>
             </AppBar>
         </div>
     )
+}
+
+Navbar.propTypes = {
+    togglePreview: PropTypes.func.isRequired,
+    onEditorClear: PropTypes.func.isRequired,
 }
 
 export default connect(null, mapDispatchToProps)(Navbar)
