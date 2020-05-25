@@ -16,7 +16,14 @@ const Preview = ({ content, previewContent, showPreview }) => {
     const responsivePreviewMQ = useMediaQuery('(max-width: 620px)')
 
     if (responsivePreviewMQ) {
-        return showPreview && <PreviewMobile content={content} />
+        return (
+            showPreview && (
+                <PreviewMobile
+                    content={content}
+                    previewContent={previewContent}
+                />
+            )
+        )
     }
 
     return <PreviewDesktop content={content} previewContent={previewContent} />
@@ -65,8 +72,23 @@ PreviewDesktop.propTypes = {
     previewContent: PropTypes.string.isRequired,
 }
 
-const PreviewMobile = ({ content }) => (
+const PreviewMobile = ({ content, previewContent }) => (
     <Fragment>
+        <div
+            id="preview"
+            style={{
+                display: 'none',
+            }}
+            dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(
+                    marked(previewContent, {
+                        gfm: true,
+                        breaks: true,
+                    })
+                ),
+            }}
+        />
+
         <div
             id="md_preview"
             className="preview preview__mobile"

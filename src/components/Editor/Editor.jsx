@@ -11,6 +11,7 @@ import { placeholderText } from '../../data/placeholder'
 
 // Markdown mode for editor.
 import 'ace-builds/src-noconflict/mode-markdown'
+import 'ace-builds/src-noconflict/mode-plain_text'
 
 // Themes.
 import 'ace-builds/src-noconflict/theme-ambiance'
@@ -132,7 +133,6 @@ class Editor extends Component {
                 <AceEditor
                     fontSize={12}
                     mode="markdown"
-                    // theme="iplastic"
                     theme={this.props.editorTheme}
                     name="editor"
                     showPrintMargin={false}
