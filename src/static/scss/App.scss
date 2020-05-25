@@ -18,38 +18,7 @@
     }
 }
 
-#editor {
-    font-family: 'Roboto Mono';
-    font-size: 85%;
-}
-
-#md_preview,
-#preview {
-    height: 100vh;
-    overflow-y: scroll;
-}
-
 img {
     object-fit: cover;
     width: 100%;
-}
-
-@media screen and (min-width: 600px) {
-    #md_preview,
-    #preview {
-        height: calc(100vh - 64px);
-    }
-}
-
-@media screen and (max-width: 600px) {
-    #md_preview,
-    #preview {
-        height: calc(100vh - 56px);
-    }
-}
-
-@media screen and (max-width: 620px) {
-    #preview {
-        display: none;
-    }
 }

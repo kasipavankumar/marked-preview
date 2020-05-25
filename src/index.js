@@ -6,12 +6,12 @@ import { createLogger } from 'redux-logger'
 import * as serviceWorker from './serviceWorker'
 
 import App from './containers/App'
-import { editorReducers } from './redux/reducers'
+import { editor, preview } from './redux/reducers'
 
 import './static/scss/index.scss'
 
 const logger = createLogger()
-const rootReducers = combineReducers({ editorReducers })
+const rootReducers = combineReducers({ editor, preview })
 const store = createStore(rootReducers, applyMiddleware(logger))
 
 ReactDOM.render(

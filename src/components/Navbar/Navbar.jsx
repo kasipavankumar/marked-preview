@@ -4,19 +4,23 @@ import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import IconButton from '@material-ui/core/IconButton'
 import SettingsIcon from '@material-ui/icons/Settings'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 
-import { clearEditor } from '../../redux/actions'
+import EditorThemeSelector from '../Editor/Theme/EditorThemeSelector'
+
+import { clearEditor, togglePreview } from '../../redux/actions'
 
 import './Navbar.scss'
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onEditorClear: () => dispatch(clearEditor()),
+        togglePreview: () => dispatch(togglePreview()),
     }
 }
 
@@ -37,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
  */
 const Navbar = (props) => {
     const classes = useStyles()
+    const showPreviewIcon = useMediaQuery('(max-width: 620px)')
     const [anchorElement, setAnchorElement] = useState(null)
     const open = Boolean(anchorElement)
 
@@ -48,9 +53,12 @@ const Navbar = (props) => {
         setAnchorElement(null)
     }
 
-    const currentEditorContent = useSelector(
-        (state) => state.editorReducers.editorBodyContent
-    )
+    const handleClearEditor = () => {
+        props.onEditorClear()
+        handleClose()
+    }
+
+    const currentEditorContent = useSelector((state) => state.editor.content)
 
     const downloadMarkdown = () => {
         const element = document.createElement('a')
@@ -64,14 +72,6 @@ const Navbar = (props) => {
         handleClose()
     }
 
-    /**
-     * Handle the clear editor & remove anchor element as well.
-     */
-    const handleClearEditor = () => {
-        props.onEditorClear()
-        handleClose()
-    }
-
     return (
         <div className={`${classes.root} navbar`}>
             <AppBar position="static">
@@ -79,16 +79,19 @@ const Navbar = (props) => {
                     <Typography variant="h6" className={classes.title}>
                         <a href="/">Markdown Preview</a>
                     </Typography>
-                    <IconButton
-                        style={{
-                            marginRight: '10px',
-                        }}>
-                        <VisibilityIcon
+                    {showPreviewIcon && (
+                        <IconButton
+                            onClick={props.togglePreview}
                             style={{
-                                fill: 'white',
-                            }}
-                        />
-                    </IconButton>
+                                marginRight: '10px',
+                            }}>
+                            <VisibilityIcon
+                                style={{
+                                    fill: 'white',
+                                }}
+                            />
+                        </IconButton>
+                    )}
                     <IconButton
                         onClick={handleClick}
                         style={{
@@ -104,6 +107,7 @@ const Navbar = (props) => {
                         anchorEl={anchorElement}
                         open={open}
                         onClose={handleClose}>
+                        <EditorThemeSelector />
                         <MenuItem onClick={() => downloadMarkdown()}>
                             Download Markdown
                         </MenuItem>

@@ -1,0 +1,28 @@
+.preview {
+    height: 100vh;
+    overflow-y: scroll;
+
+    &__desktop {
+        display: block;
+    }
+
+    &__mobile {
+        display: block;
+        padding: 0.5rem;
+        position: fixed;
+        z-index: 10;
+        background-color: white;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .preview {
+        height: calc(100vh - 64px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .preview {
+        height: calc(100vh - 56px);
+    }
+}
