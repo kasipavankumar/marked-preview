@@ -1,6 +1,7 @@
 import { placeholderText } from '../data/placeholder'
 import {
     CLEAR_EDITOR,
+    CHANGE_EDITOR_THEME,
     CHANGE_EDITOR_CONTENT,
     CHANGE_PREVIEW_CONTENT,
     TOGGLE_PREVIEW,
@@ -8,6 +9,7 @@ import {
 
 const initialEditorState = {
     content: placeholderText,
+    theme: JSON.parse(localStorage.getItem('editorTheme')) || 'iplastic',
 }
 
 export const editor = (state = initialEditorState, action) => {
@@ -19,6 +21,10 @@ export const editor = (state = initialEditorState, action) => {
         case CHANGE_EDITOR_CONTENT:
             return Object.assign({}, state, {
                 content: action.payload,
+            })
+        case CHANGE_EDITOR_THEME:
+            return Object.assign({}, state, {
+                theme: action.payload,
             })
         default:
             return state

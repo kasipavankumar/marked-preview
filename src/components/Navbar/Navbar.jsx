@@ -13,7 +13,7 @@ import SettingsIcon from '@material-ui/icons/Settings'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 
 // Shared components.
-import EditorThemeSelector from '../Editor/Theme/EditorThemeSelector'
+import { ThemeSelectorDialogContainer } from '../Editor/Theme/EditorThemeSelector'
 
 // Utility functions.
 import { downloadControllerMarkdown } from '../../utils/DownloadController'
@@ -64,21 +64,22 @@ const Navbar = (props) => {
 
     const currentEditorContent = useSelector((state) => state.editor.content)
 
-    // const downloadMarkdown = () => {
-    //     const element = document.createElement('a')
-    //     const file = new Blob([currentEditorContent], {
-    //         type: 'text/markdown',
-    //     })
-    //     element.href = URL.createObjectURL(file)
-    //     element.download = 'test.md'
-    //     document.body.appendChild(element)
-    //     element.click()
-    //     handleClose()
-    // }
-
     const handleDownloadMarkdown = () => {
         downloadControllerMarkdown(currentEditorContent)
         handleClose()
+    }
+
+    const [themeSelectorOpen, setThemeSelectorOpen] = useState(false)
+    const [themeSelectedValue, setThemeSelectedValue] = useState('')
+
+    const handleThemeSelectorOpen = () => {
+        handleClose()
+        setThemeSelectorOpen(true)
+    }
+
+    const handleThemeSelectorClose = (value) => {
+        setThemeSelectorOpen(false)
+        setThemeSelectedValue(value)
     }
 
     return (
@@ -112,14 +113,28 @@ const Navbar = (props) => {
                             }}
                         />
                     </IconButton>
-                    <Menu anchorEl={anchorElement} open={open} onClose={handleClose}>
-                        <EditorThemeSelector />
+                    <Menu
+                        anchorEl={anchorElement}
+                        open={open}
+                        onClose={handleClose}>
+                        {/* <EditorThemeSelector /> */}
+                        <MenuItem onClick={handleThemeSelectorOpen}>
+                            Choose Theme
+                        </MenuItem>
                         <MenuItem onClick={() => handleDownloadMarkdown()}>
                             Download Markdown
                         </MenuItem>
-                        <MenuItem onClick={handleClearEditor}>Clear Editor</MenuItem>
+                        <MenuItem onClick={handleClearEditor}>
+                            Clear Editor
+                        </MenuItem>
                     </Menu>
                 </Toolbar>
+
+                <ThemeSelectorDialogContainer
+                    selectedValue={themeSelectedValue}
+                    open={themeSelectorOpen}
+                    onClose={handleThemeSelectorClose}
+                />
             </AppBar>
         </div>
     )

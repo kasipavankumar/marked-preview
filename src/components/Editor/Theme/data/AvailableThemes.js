@@ -29,7 +29,7 @@ export const themes = [
     'Pastel on Dark',
     'Solarized Dark',
     'Solarized Light',
-    'SQL Server',
+    'SQLServer',
     'Terminal',
     'Textmate',
     'Tomorrow',

@@ -1,29 +1,37 @@
-export const placeholderText = `# Welcome to Markdown Preview
-## It will show you the preview as you type.
+export const placeholderText = `# 👋, Welcome to Markdown Preview
 
-[Google](https://google.com)
+## You will get instant preview as you type.
 
-\`#include<iostream>\`
+That being said, here is a link to [Google](https://google.com).
 
-1. AMD Ryzen 5 2600
-2. Asus ROG Strix B450
-3. Nvidia RTX 2080Ti
-4. G. Skill TridentZ 32GB DDR4
+How to get random values from a given array, arr? 
+\`Math.floor(Math.random() * arr.length)\`
 
-> Expect the unexpected.
+**PC Shopping List**
+1. [ ] Intel Core i5 10600K
+2. [ ] Asus ROG Strix Z490F
+3. [x] G.Skill TridentZ 32GB DDR4 @ 3200MHz
+4. [x] Samsung 970 Pro, 1TB NVMe PCIe SSD
+5. [x] Seagate Firecuda 2TB SSHD
+6. [ ] MSI | Nvidia RTX 2070 Super
+7. [x] NZXT H510 Elite
+8. [x] Corsair RM750
 
+Here is a motivating quote for you.
+> One person's "paranoia" is another person's "engineering redundancy". - Marcus J. Ranum
+
+\`\`\`javascript
+const Say = ({ message }) => (
+    <React.Fragment>
+        <h1>{message}</h1>
+    </React.Fragment>
+)
 \`\`\`
-// This is a code block.
-class Preview extends Component {
-    render() {
-        return (
-            <h1>Hello, world!</h1>
-        )
-    }
-}
-\`\`\`
 
-![Image by Roman Synkevych on Unsplash](https://bit.ly/3cQk2Hk)
+An image that can be your next wallpaper.
+![Image by Paweł Czerwiński on Unsplash](https://images.unsplash.com/photo-1584968143694-8fa8bbde5247)
 
-**Made by kman**
+You can take a look at the source code over at [Github](#).
+
+**Code Plus Coffee • 2020**
 `

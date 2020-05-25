@@ -1,4 +1,5 @@
 import {
+    CHANGE_EDITOR_THEME,
     CHANGE_EDITOR_CONTENT,
     CHANGE_PREVIEW_CONTENT,
     CLEAR_EDITOR,
@@ -36,5 +37,17 @@ export const setPreviewContent = (text) => {
 export const togglePreview = () => {
     return {
         type: TOGGLE_PREVIEW,
+    }
+}
+
+/**
+ * Action to change editor theme.
+ */
+export const changeEditorTheme = (theme) => {
+    localStorage.setItem('editorTheme', JSON.stringify(theme))
+
+    return {
+        type: CHANGE_EDITOR_THEME,
+        payload: theme,
     }
 }

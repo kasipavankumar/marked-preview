@@ -1,4 +1,6 @@
 .preview {
+    font-size: 95%;
+    padding: 0.5rem;
     height: 100vh;
     overflow-y: scroll;
 
@@ -8,7 +10,7 @@
 
     &__mobile {
         display: block;
-        padding: 0.5rem;
+        padding: 0.6rem;
         position: fixed;
         z-index: 10;
         background-color: white;

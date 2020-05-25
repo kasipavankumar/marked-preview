@@ -13,3 +13,9 @@ body {
         font-size: 80%;
     }
 }
+
+@media screen and (max-width: 620px) {
+    body {
+        overflow: scroll;
+    }
+}

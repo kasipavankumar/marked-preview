@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
@@ -6,11 +7,20 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import FormControl from '@material-ui/core/FormControl'
-import Typography from '@material-ui/core/Typography'
 import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 
 import { themes } from './data/AvailableThemes'
+
+import { changeEditorTheme } from '../../../redux/actions'
+
+import { transformThemeNames } from '../../../utils/TransformThemeNames'
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onEditorThemeChange: (theme) => dispatch(changeEditorTheme(theme)),
+    }
+}
 
 const ThemeSelectorDialog = (props) => {
     const { onClose, selectedValue, open } = props
@@ -19,10 +29,21 @@ const ThemeSelectorDialog = (props) => {
         onClose(selectedValue)
     }
 
-    const [editorTheme, setEditorTheme] = useState('Github')
+    const originalEditorThemeValue = 'originalEditorThemeValue'
+
+    const defaultThemeValue =
+        localStorage.getItem(originalEditorThemeValue) || 'iPlastic'
+
+    const [editorTheme, setEditorTheme] = useState(defaultThemeValue)
 
     const handleSelectChange = (event) => {
         setEditorTheme(event.target.value)
+        localStorage.setItem(originalEditorThemeValue, event.target.value)
+    }
+
+    const handleEditorThemeChange = () => {
+        props.onEditorThemeChange(transformThemeNames(editorTheme))
+        handleClose()
     }
 
     return (
@@ -34,22 +55,28 @@ const ThemeSelectorDialog = (props) => {
                 style={{
                     padding: '1rem',
                 }}>
-                <DialogContentText>
-                    <Typography variant="body">Select Editor Theme</Typography>
-                </DialogContentText>
+                <DialogContentText>Select Editor Theme</DialogContentText>
                 <FormControl
                     style={{ width: '100%', height: 'auto' }}
                     variant="outlined">
                     <Select value={editorTheme} onChange={handleSelectChange}>
                         {themes.map((theme) => (
-                            <MenuItem value={theme}>{theme}</MenuItem>
+                            <MenuItem key={theme} value={theme}>
+                                {theme}
+                            </MenuItem>
                         ))}
                     </Select>
                 </FormControl>
             </DialogContent>
             <DialogActions>
-                <Button color="primary">Cancel</Button>
-                <Button color="primary">Save</Button>
+                <Button color="primary" onClick={handleClose}>
+                    Cancel
+                </Button>
+                <Button
+                    color="primary"
+                    onClick={() => handleEditorThemeChange()}>
+                    Save
+                </Button>
             </DialogActions>
         </Dialog>
     )
@@ -61,9 +88,14 @@ ThemeSelectorDialog.propTypes = {
     selectedValue: PropTypes.string.isRequired,
 }
 
+const ThemeSelectorDialogContainer = connect(
+    null,
+    mapDispatchToProps
+)(ThemeSelectorDialog)
+
 const EditorThemeSelector = () => {
-    const [open, setOpen] = React.useState(false)
-    const [selectedValue, setSelectedValue] = React.useState(themes[1])
+    const [open, setOpen] = useState(false)
+    const [selectedValue, setSelectedValue] = useState(themes[1])
 
     const handleClickOpen = () => {
         setOpen(true)
@@ -77,7 +109,7 @@ const EditorThemeSelector = () => {
     return (
         <div>
             <MenuItem onClick={handleClickOpen}>Choose Theme</MenuItem>
-            <ThemeSelectorDialog
+            <ThemeSelectorDialogContainer
                 selectedValue={selectedValue}
                 open={open}
                 onClose={handleClose}
@@ -86,4 +118,5 @@ const EditorThemeSelector = () => {
     )
 }
 
+export { ThemeSelectorDialogContainer }
 export default EditorThemeSelector
