@@ -17,8 +17,8 @@ How to get random values from a given array, arr?
 7. [x] NZXT H510 Elite
 8. [x] Corsair RM750
 
-Here is a motivating quote for you.
-> One person's "paranoia" is another person's "engineering redundancy". - Marcus J. Ranum
+Here is a random quote for you -
+> One person's "paranoia" is another person's "engineering redundancy" - Marcus J. Ranum
 
 \`\`\`javascript
 const Say = ({ message }) => (

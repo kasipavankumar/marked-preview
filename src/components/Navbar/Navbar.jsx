@@ -41,7 +41,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const Logo = (props) => (
+/**
+ * Markdown logo sourced from Github Octicons.
+ * @param {object} props - Properties.
+ * @see {@link https://primer.style/octicons/markdown Github Octicons}
+ */
+const MarkdownLogo = (props) => (
     <svg viewBox="0 0 16 16" width={26} height={26} {...props}>
         <path
             fillRule="evenodd"
@@ -50,14 +55,32 @@ const Logo = (props) => (
     </svg>
 )
 
-/**
- * Navbar component.
+/** Top Appbar.
+ * @param {object} props - Properties.
+ * @param {Function} togglePreview - Redux action to toggle preview on mobile screens.
+ * @param {Function} onEditorClear - Redux action to clear the editor content.
  */
 const Navbar = (props) => {
     const classes = useStyles()
-    const showPreviewIcon = useMediaQuery('(max-width: 620px)')
+    /** Anchor element for Menu. */
     const [anchorElement, setAnchorElement] = useState(null)
+
+    /** Boolean value indicating whether menu is open. */
     const open = Boolean(anchorElement)
+
+    /** Boolean value based on useMediaQuery which programmatically
+     * shows/hides preview icon.
+     */
+    const showPreviewIcon = useMediaQuery('(max-width: 620px)')
+
+    /** Grab current editor content for DownloadController. */
+    const currentEditorContent = useSelector((state) => state.editor.content)
+
+    /** Boolean value for theme selector dropdown. */
+    const [themeSelectorOpen, setThemeSelectorOpen] = useState(false)
+
+    /** Currently selected theme value. */
+    const [themeSelectedValue, setThemeSelectedValue] = useState('')
 
     const handleClick = (event) => {
         setAnchorElement(event.currentTarget)
@@ -72,15 +95,10 @@ const Navbar = (props) => {
         handleClose()
     }
 
-    const currentEditorContent = useSelector((state) => state.editor.content)
-
     const handleDownloadMarkdown = () => {
         downloadControllerMarkdown(currentEditorContent)
         handleClose()
     }
-
-    const [themeSelectorOpen, setThemeSelectorOpen] = useState(false)
-    const [themeSelectedValue, setThemeSelectedValue] = useState('')
 
     const handleThemeSelectorOpen = () => {
         handleClose()
@@ -104,7 +122,7 @@ const Navbar = (props) => {
                                 flexDirection: 'row',
                                 alignItems: 'center',
                             }}>
-                            <Logo fill={'white'} />
+                            <MarkdownLogo fill={'white'} />
                             <span style={{ marginLeft: '5px' }}>Preview</span>
                         </a>
                     </Typography>
@@ -139,10 +157,7 @@ const Navbar = (props) => {
                         </IconButton>
                     </ToolTip>
 
-                    <Menu
-                        anchorEl={anchorElement}
-                        open={open}
-                        onClose={handleClose}>
+                    <Menu anchorEl={anchorElement} open={open} onClose={handleClose}>
                         {/* <EditorThemeSelector /> */}
                         <MenuItem onClick={handleThemeSelectorOpen}>
                             Choose Theme
@@ -150,9 +165,7 @@ const Navbar = (props) => {
                         <MenuItem onClick={() => handleDownloadMarkdown()}>
                             Download Markdown
                         </MenuItem>
-                        <MenuItem onClick={handleClearEditor}>
-                            Clear Editor
-                        </MenuItem>
+                        <MenuItem onClick={handleClearEditor}>Clear Editor</MenuItem>
                     </Menu>
                 </Toolbar>
 

@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import marked from 'marked'
 import DOMPurify from 'dompurify'
+import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+
+import EmptyPreview from '../../static/illustrations/EmptyPreview/empty_preview.png'
 
 const mapStateToProps = (state) => {
     return {
@@ -15,18 +18,17 @@ const mapStateToProps = (state) => {
 const Preview = ({ content, previewContent, showPreview }) => {
     const responsivePreviewMQ = useMediaQuery('(max-width: 620px)')
 
-    if (responsivePreviewMQ) {
-        return (
-            showPreview && (
-                <PreviewMobile
-                    content={content}
-                    previewContent={previewContent}
-                />
-            )
-        )
-    }
-
-    return <PreviewDesktop content={content} previewContent={previewContent} />
+    return (
+        <Fragment>
+            <PreviewMain
+                isMq={responsivePreviewMQ}
+                isContentEmpty={content.length === 0}
+                content={content}
+                previewContent={previewContent}
+                show={showPreview}
+            />
+        </Fragment>
+    )
 }
 
 Preview.propTypes = {
@@ -35,77 +37,69 @@ Preview.propTypes = {
     showPreview: PropTypes.bool.isRequired,
 }
 
-const PreviewDesktop = ({ content, previewContent }) => (
-    <Fragment>
-        <div
-            id="preview"
-            style={{
-                display: 'none',
-            }}
-            dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(
-                    marked(previewContent, {
-                        gfm: true,
-                        breaks: true,
-                    })
-                ),
-            }}
-        />
+const PreviewMain = (props) => {
+    const { isMq, show, isContentEmpty, previewContent, content } = props
+    const previewDesktop = show && !isContentEmpty && !isMq && `preview__desktop`
+    const previewMobile = show && !isContentEmpty && isMq && `preview__mobile`
 
-        <div
-            id="md_preview"
-            className="preview preview__desktop"
-            dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(
-                    marked(content, {
-                        gfm: true /** To enable Github flavoured markdown. */,
-                        breaks: true /** Intreprets \n as <br /> */,
-                    })
-                ),
-            }}
-        />
-    </Fragment>
-)
+    const previewClassnames = `preview ${previewDesktop} ${previewMobile}`
 
-PreviewDesktop.propTypes = {
-    content: PropTypes.string.isRequired,
+    if (isContentEmpty) {
+        if (isMq) {
+            return show && <EmptyPreviewIllustration />
+        }
+
+        return <EmptyPreviewIllustration />
+    }
+
+    return (
+        <Fragment>
+            <div
+                id="preview"
+                style={{
+                    display: 'none',
+                }}
+                dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                        marked(previewContent, {
+                            gfm: true,
+                            breaks: true,
+                        })
+                    ),
+                }}
+            />
+
+            <div
+                id="md_preview"
+                className={previewClassnames}
+                dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                        marked(content, {
+                            gfm: true /** To enable Github flavoured markdown. */,
+                            breaks: true /** Intreprets \n as <br /> */,
+                        })
+                    ),
+                }}
+            />
+        </Fragment>
+    )
+}
+
+PreviewMain.propTypes = {
+    isMq: PropTypes.bool.isRequired,
+    isContentEmpty: PropTypes.bool.isRequired,
+    show: PropTypes.bool.isRequired,
     previewContent: PropTypes.string.isRequired,
-}
-
-const PreviewMobile = ({ content, previewContent }) => (
-    <Fragment>
-        <div
-            id="preview"
-            style={{
-                display: 'none',
-            }}
-            dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(
-                    marked(previewContent, {
-                        gfm: true,
-                        breaks: true,
-                    })
-                ),
-            }}
-        />
-
-        <div
-            id="md_preview"
-            className="preview preview__mobile"
-            dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(
-                    marked(content, {
-                        gfm: true /** To enable Github flavoured markdown. */,
-                        breaks: true /** Intreprets \n as <br /> */,
-                    })
-                ),
-            }}
-        />
-    </Fragment>
-)
-
-PreviewMobile.propTypes = {
     content: PropTypes.string.isRequired,
 }
 
-export default connect(mapStateToProps)(Preview)
+const EmptyPreviewIllustration = () => (
+    <div className={`preview preview__empty`}>
+        <img src={EmptyPreview} alt="Editor has no content." />
+        <Typography variant="button" color="error">
+            Nothing to preview. <br /> Add something to the editor.
+        </Typography>
+    </div>
+)
+
+export default connect(mapStateToProps, null)(Preview)

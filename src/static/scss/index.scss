@@ -3,6 +3,7 @@
 
 body {
     margin: 0;
+    padding: 0;
     overflow: hidden;
     font-family: var(--font-stack-regular);
     -webkit-font-smoothing: antialiased;
@@ -14,8 +15,8 @@ body {
     }
 }
 
-@media screen and (max-width: 620px) {
-    body {
-        overflow: scroll;
-    }
-}
+// @media screen and (max-width: 620px) {
+//     body {
+//         overflow: scroll;
+//     }
+// }

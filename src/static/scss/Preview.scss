@@ -1,20 +1,60 @@
 .preview {
+    display: block;
     font-size: 95%;
-    padding: 0.5rem;
+    padding: 15px;
     height: 100vh;
-    overflow-y: scroll;
-    background: inherit;
+    overflow: scroll;
+
+    &__empty {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        background-color: white;
+        opacity: 1;
+        animation: fade-in;
+        animation-iteration-count: 1;
+        animation-timing-function: ease;
+        animation-duration: 0.55s;
+    }
 
     &__desktop {
-        display: block;
+        display: flex;
+        flex-direction: column;
     }
 
     &__mobile {
-        display: block;
-        padding: 0.6rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
         position: fixed;
         z-index: 10;
         background-color: white;
+        height: 100%;
+        width: 100%;
+    }
+
+    &__display_none {
+        display: none;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .preview {
+        &__empty {
+            position: fixed;
+            z-index: 10;
+        }
     }
 }
 
