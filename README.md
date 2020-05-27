@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Marked Preview
 
-## Available Scripts
+## Fast & minimal markdown preview sprinkled with Material Design.
 
-In the project directory, you can run:
+![Frontend Library](https://img.shields.io/badge/Frontend%20Library-Material%20UI-success?style=for-the-badge&logo=material-ui)
+![Core Package](https://img.shields.io/badge/Core%20Package-Marked-important?style=for-the-badge&logo=markdown)
+![Code Style](https://img.shields.io/badge/Code%20Style-Prettier-informational?style=for-the-badge&logo=prettier)
 
-### `npm start`
+## How to use?
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Visit [Marked Preview](https://markedpreview.web.app).
+2. There you can see markdown text added as a placeholder.
+3. Clear it.
+4. Start typing markdown of your choice.
+5. Get instant preview on the right as you type.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+_HINT: Clear editor using provided option in the settings menu which is accessible on the top right corner._
 
-### `npm test`
+## How to utilize the source code?
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Steps involved are as follows:
 
-### `npm run build`
+```bash
+$ git clone https://github.com/code-plus-coffee/marked-preview.git
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+$ cd marked-preview
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+# NPM
+$ npm install or npm i
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# OR
 
-### `npm run eject`
+# Yarn
+$ yarn
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# After npm install is done
+$ npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Development server can now be accessed at http://localhost:3000
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Start coding.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Libraries used
 
-## Learn More
+1. [Marked](https://github.com/markedjs/marked) - To parse & convert the markdown content to HTML.
+2. [DOMPurify](https://github.com/cure53/DOMPurify) - To sanitize the HTML processed by Marked.
+3. [Material UI](https://github.com/mui-org/material-ui) - All the UI.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are welcomed.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+If you have any suggestions or found any bugs? [File an issue](https://github.com/code-plus-coffee/marked-preview/issues/).
