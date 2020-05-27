@@ -41,8 +41,7 @@ const PreviewMain = (props) => {
     const { isMq, show, isContentEmpty, previewContent, content } = props
     const previewDesktop = show && !isContentEmpty && !isMq && `preview__desktop`
     const previewMobile = show && !isContentEmpty && isMq && `preview__mobile`
-
-    const previewClassnames = `preview ${previewDesktop} ${previewMobile}`
+    const previewClasses = `preview ${previewDesktop} ${previewMobile}`
 
     if (isContentEmpty) {
         if (isMq) {
@@ -71,12 +70,12 @@ const PreviewMain = (props) => {
 
             <div
                 id="md_preview"
-                className={previewClassnames}
+                className={previewClasses}
                 dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(
                         marked(content, {
-                            gfm: true /** To enable Github flavoured markdown. */,
-                            breaks: true /** Intreprets \n as <br /> */,
+                            gfm: true /** Enables Github flavoured markdown. */,
+                            breaks: true /** Intreprets line breaks (\n) as <br /> */,
                         })
                     ),
                 }}
@@ -93,11 +92,15 @@ PreviewMain.propTypes = {
     content: PropTypes.string.isRequired,
 }
 
+/**
+ * Displays an illustration when there is no content in the editor.
+ */
 const EmptyPreviewIllustration = () => (
-    <div className={`preview preview__empty`}>
+    <div className="preview preview__empty">
         <img src={EmptyPreview} alt="Editor has no content." />
-        <Typography variant="button" color="error">
-            Nothing to preview. <br /> Add something to the editor.
+        <Typography variant="h6" color="primary">
+            {/* Nothing to preview. <br /> Add something to the editor. */}
+            Heads up! There is nothing to preview.
         </Typography>
     </div>
 )

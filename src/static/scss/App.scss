@@ -4,7 +4,6 @@
 
 .App {
     display: grid;
-    gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     height: 100%;
     width: 100%;

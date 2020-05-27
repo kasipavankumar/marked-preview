@@ -83,8 +83,8 @@ abbr[title] {
 
 tt,
 code {
-    font-family: var(--font-monospace);
-    background-color: hsla(0, 0%, 0%, 0.04);
+    font-family: var(--font-stack-monospace);
+    background-color: hsla(0, 0%, 0%, 0.06);
     border-radius: 3px;
     padding: 0.2em 0;
 
@@ -133,8 +133,8 @@ blockquote {
 pre {
     // font-size: 0.85rem;
     line-height: 1.42;
-    background: hsla(0, 0%, 0%, 0.04);
-    border-radius: 3px;
+    background: hsla(0, 0%, 0%, 0.06);
+    border-radius: 4px;
     // overflow: auto;
     word-wrap: normal;
     padding: 1.45rem;

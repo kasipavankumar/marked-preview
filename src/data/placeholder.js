@@ -1,13 +1,13 @@
 export const placeholderText = `# 👋, Welcome to Markdown Preview
 
-## You will get instant preview as you type.
+## Get instant preview of what you type in the editor. ⚡
 
 That being said, here is a link to [Google](https://google.com).
 
 How to get random values from a given array, arr? 
 \`Math.floor(Math.random() * arr.length)\`
 
-**PC Shopping List**
+🖥️ **PC Shopping List**
 1. [ ] Intel Core i5 10600K
 2. [ ] Asus ROG Strix Z490F
 3. [x] G.Skill TridentZ 32GB DDR4 @ 3200MHz
@@ -18,7 +18,8 @@ How to get random values from a given array, arr?
 8. [x] Corsair RM750
 
 Here is a random quote for you -
-> One person's "paranoia" is another person's "engineering redundancy" - Marcus J. Ranum
+> One person's "paranoia" is another person's "engineering redundancy"
+> <span>Marcus J. Ranum<span>
 
 \`\`\`javascript
 const Say = ({ message }) => (
@@ -28,8 +29,8 @@ const Say = ({ message }) => (
 )
 \`\`\`
 
-An image that can be your next wallpaper.
-![Image by Paweł Czerwiński on Unsplash](https://images.unsplash.com/photo-1584968143694-8fa8bbde5247)
+An image that can be your next wallpaper. 📷
+![Image by Paweł Czerwiński on Unsplash](https://images.unsplash.com/photo-1590508965885-90c5502bd6f4)
 
 You can take a look at the source code over at [Github](#).
 

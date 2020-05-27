@@ -94,7 +94,7 @@ class Editor extends Component {
     //     }
     // }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (this.props.editorBodyContent !== nextProps.editorBodyContent) {
             this.setState({
                 editorContent: nextProps.editorBodyContent,

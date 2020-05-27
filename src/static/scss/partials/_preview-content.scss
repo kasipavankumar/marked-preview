@@ -1,0 +1,40 @@
+$_blockquote-primary-color: #78C0A8;
+
+.preview {
+
+    /*! See: https://codepen.io/cliftwalker/pen/XJaEXY */
+    blockquote {
+        font-family: var(--font-stack-regular);
+        font-size: 125%;
+        font-style: italic;
+        margin: 10px auto;
+        color: #555;
+        padding: 1.2em 30px 1.2em 75px;
+        border-left: 8px solid $_blockquote-primary-color;
+        line-height: 1.6;
+        position: relative;
+        background: #ededed;
+
+        &::before {
+            content: "\201C";
+            color: $_blockquote-primary-color;
+            font-family: serif;
+            font-size: 4em;
+            position: absolute;
+            left: 10px;
+            top: -10px;
+        }
+
+        &::after {
+            content: ''
+        }
+
+        span {
+            display: block;
+            color: #333;
+            font-style: bold;
+            font-weight: normal;
+            margin-top: 1em;
+        }
+    }
+}

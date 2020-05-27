@@ -1,3 +1,5 @@
+// TODO - Add validation when there is no content & download is initiated.
+
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect, useSelector } from 'react-redux'
@@ -15,9 +17,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility'
 
 // Shared components.
 import { ThemeSelectorDialogContainer } from '../Editor/Theme/EditorThemeSelector'
-
-// Utility functions.
-import { downloadControllerMarkdown } from '../../utils/DownloadController'
+import DownloadHandlerDialog from '../DownloadHandlerDialog/DownloadHandlerDialog'
 
 // Redux.
 import { clearEditor, togglePreview } from '../../redux/actions'
@@ -62,6 +62,7 @@ const MarkdownLogo = (props) => (
  */
 const Navbar = (props) => {
     const classes = useStyles()
+
     /** Anchor element for Menu. */
     const [anchorElement, setAnchorElement] = useState(null)
 
@@ -82,6 +83,9 @@ const Navbar = (props) => {
     /** Currently selected theme value. */
     const [themeSelectedValue, setThemeSelectedValue] = useState('')
 
+    /** Download handle dialog open status */
+    const [downloadDialogOpenStatus, setDownloadDialogOpenStatus] = useState(false)
+
     const handleClick = (event) => {
         setAnchorElement(event.currentTarget)
     }
@@ -91,13 +95,8 @@ const Navbar = (props) => {
     }
 
     const handleClearEditor = () => {
+        handleClose()
         props.onEditorClear()
-        handleClose()
-    }
-
-    const handleDownloadMarkdown = () => {
-        downloadControllerMarkdown(currentEditorContent)
-        handleClose()
     }
 
     const handleThemeSelectorOpen = () => {
@@ -108,6 +107,15 @@ const Navbar = (props) => {
     const handleThemeSelectorClose = (value) => {
         setThemeSelectorOpen(false)
         setThemeSelectedValue(value)
+    }
+
+    const handleDownloadDialogOpen = () => {
+        handleClose()
+        setDownloadDialogOpenStatus(true)
+    }
+
+    const handleDownloadDialogClose = () => {
+        setDownloadDialogOpenStatus(false)
     }
 
     return (
@@ -158,13 +166,14 @@ const Navbar = (props) => {
                     </ToolTip>
 
                     <Menu anchorEl={anchorElement} open={open} onClose={handleClose}>
-                        {/* <EditorThemeSelector /> */}
                         <MenuItem onClick={handleThemeSelectorOpen}>
                             Choose Theme
                         </MenuItem>
-                        <MenuItem onClick={() => handleDownloadMarkdown()}>
+
+                        <MenuItem onClick={handleDownloadDialogOpen}>
                             Download Markdown
                         </MenuItem>
+
                         <MenuItem onClick={handleClearEditor}>Clear Editor</MenuItem>
                     </Menu>
                 </Toolbar>
@@ -173,6 +182,12 @@ const Navbar = (props) => {
                     selectedValue={themeSelectedValue}
                     open={themeSelectorOpen}
                     onClose={handleThemeSelectorClose}
+                />
+
+                <DownloadHandlerDialog
+                    open={downloadDialogOpenStatus}
+                    handleClose={handleDownloadDialogClose}
+                    content={currentEditorContent}
                 />
             </AppBar>
         </div>
