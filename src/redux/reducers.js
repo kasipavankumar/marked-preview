@@ -33,7 +33,7 @@ export const editor = (state = initialEditorState, action) => {
 
 const initialPreviewState = {
     show: false,
-    content: '',
+    content: placeholderText,
 }
 
 export const preview = (state = initialPreviewState, action) => {
