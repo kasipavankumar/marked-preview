@@ -1,5 +1,3 @@
-// TODO - Add validation when there is no content & download is initiated.
-
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect, useSelector } from 'react-redux'
@@ -177,19 +175,19 @@ const Navbar = (props) => {
                         <MenuItem onClick={handleClearEditor}>Clear Editor</MenuItem>
                     </Menu>
                 </Toolbar>
-
-                <ThemeSelectorDialogContainer
-                    selectedValue={themeSelectedValue}
-                    open={themeSelectorOpen}
-                    onClose={handleThemeSelectorClose}
-                />
-
-                <DownloadHandlerDialog
-                    open={downloadDialogOpenStatus}
-                    handleClose={handleDownloadDialogClose}
-                    content={currentEditorContent}
-                />
             </AppBar>
+
+            <ThemeSelectorDialogContainer
+                selectedValue={themeSelectedValue}
+                open={themeSelectorOpen}
+                onClose={handleThemeSelectorClose}
+            />
+
+            <DownloadHandlerDialog
+                open={downloadDialogOpenStatus}
+                handleClose={handleDownloadDialogClose}
+                content={currentEditorContent}
+            />
         </div>
     )
 }

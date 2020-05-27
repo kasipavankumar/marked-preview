@@ -1,5 +1,5 @@
 /**
- * ### Initiates download of .md file.
+ * #### Initiates download of .md file.
  * @param {string} content - The content to be downloaded.
  * @param {string} filename - Name which will be used to download.
  */
