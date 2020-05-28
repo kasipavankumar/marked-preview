@@ -46,7 +46,7 @@ const Say = ({ message }) => (
 \`\`\`
 
 An image that can be your next wallpaper. 📷
-![Image by Paweł Czerwiński on Unsplash](https://images.unsplash.com/photo-1590508965885-90c5502bd6f4)
+![Image by Paweł Czerwiński on Unsplash](https://images.unsplash.com/photo-1590508965885-90c5502bd6f4?auto=format&fit=crop&w=1050&q=80)
 
 You can take a look at the source code over at [Github](https://github.com/code-plus-coffee/marked-preview) or maybe, play around with the code on [Codesandbox](https://codesandbox.io/s/1ekvy).
 
