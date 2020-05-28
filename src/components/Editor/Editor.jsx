@@ -11,7 +11,6 @@ import { placeholderText } from '../../data/placeholder'
 
 // Markdown mode for editor.
 import 'ace-builds/src-noconflict/mode-markdown'
-import 'ace-builds/src-noconflict/mode-plain_text'
 
 // Themes.
 import 'ace-builds/src-noconflict/theme-ambiance'
