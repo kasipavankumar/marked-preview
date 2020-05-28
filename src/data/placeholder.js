@@ -1,10 +1,26 @@
+import { motivationalQuotes } from './quotes.json'
+
+/**
+ * Quotes sourced from
+ * {@link https://github.com/freeCodeCamp/freeCodeCamp/blob/master/client/src/utils/words.json freeCodeCamp's Repository}.
+ * @returns a random quote.
+ */
+const getRandomQuote = () =>
+    motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)]
+
+const randomQuote = getRandomQuote()
+const currentYear = new Date().getFullYear()
+
+/**
+ * Default placeholder text shown on the first visit of the site.
+ */
 export const placeholderText = `# 👋, Welcome to Markdown Preview
 
 ## Get instant preview of what you type in the editor. ⚡
 
-That being said, here is a link to [Google](https://google.com).
+That being said, [Undesign](https://undesign.learn.uno/) is a place where you can find intriguing developer resources.
 
-How to get random values from a given array, arr? 
+How about getting a random value from an array, arr?
 \`Math.floor(Math.random() * arr.length)\`
 
 🖥️ **PC Shopping List**
@@ -18,8 +34,8 @@ How to get random values from a given array, arr?
 8. [x] Corsair RM750
 
 Here is a random quote for you -
-> One person's "paranoia" is another person's "engineering redundancy"
-> <span>Marcus J. Ranum<span>
+> ${randomQuote.quote}
+> <span>${randomQuote.author}</span>
 
 \`\`\`javascript
 const Say = ({ message }) => (
@@ -32,7 +48,7 @@ const Say = ({ message }) => (
 An image that can be your next wallpaper. 📷
 ![Image by Paweł Czerwiński on Unsplash](https://images.unsplash.com/photo-1590508965885-90c5502bd6f4)
 
-You can take a look at the source code over at [Github](#).
+You can take a look at the source code over at [Github](https://github.com/code-plus-coffee/marked-preview) or maybe, play around with the code on [Codesandbox](https://codesandbox.io/s/1ekvy).
 
-**Code Plus Coffee • 2020**
+**Code Plus Coffee • ${currentYear}**
 `

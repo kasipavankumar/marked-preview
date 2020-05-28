@@ -2,9 +2,10 @@
 
 ## Fast & minimal markdown preview sprinkled with Material Design.
 
-![Frontend Library](https://img.shields.io/badge/Frontend%20Library-Material%20UI-success?style=for-the-badge&logo=material-ui)
-![Core Package](https://img.shields.io/badge/Core%20Package-Marked-important?style=for-the-badge&logo=markdown)
-![Code Style](https://img.shields.io/badge/Code%20Style-Prettier-informational?style=for-the-badge&logo=prettier)
+[![Edit on Codesandbox](https://img.shields.io/badge/Play%20-Codesandbox-black?style=for-the-badge&logo=codesandbox)](https://codesandbox.io/s/1ekvy)
+[![Frontend Library](https://img.shields.io/badge/Frontend%20Library-Material%20UI-success?style=for-the-badge&logo=material-ui)](https://material-ui.com/)
+[![Core Package](https://img.shields.io/badge/Core%20Package-Marked-important?style=for-the-badge&logo=markdown)](https://marked.js.org/)
+[![Code Style](https://img.shields.io/badge/Code%20Style-Prettier-informational?style=for-the-badge&logo=prettier)](https://prettier.io/)
 
 ## How to use?
 

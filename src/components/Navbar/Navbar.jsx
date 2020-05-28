@@ -11,7 +11,8 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import IconButton from '@material-ui/core/IconButton'
 import SettingsIcon from '@material-ui/icons/Settings'
-import VisibilityIcon from '@material-ui/icons/Visibility'
+import VisibilityIcon from '@material-ui/icons/VisibilityRounded'
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOffRounded'
 
 // Shared components.
 import { ThemeSelectorDialogContainer } from '../Editor/Theme/EditorThemeSelector'
@@ -36,6 +37,20 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1,
+    },
+    titleLink: {
+        display: 'inline-flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    svgFillWhite: {
+        fill: 'white',
+    },
+    visibilityIconButton: {
+        marginRight: '10px',
+    },
+    settingsIconButton: {
+        padding: 0,
     },
 }))
 
@@ -74,6 +89,9 @@ const Navbar = (props) => {
 
     /** Grab current editor content for DownloadController. */
     const currentEditorContent = useSelector((state) => state.editor.content)
+
+    /** Grab current preview visibility status. */
+    const previewVisibilityState = useSelector((state) => state.preview.show)
 
     /** Boolean value for theme selector dropdown. */
     const [themeSelectorOpen, setThemeSelectorOpen] = useState(false)
@@ -121,45 +139,39 @@ const Navbar = (props) => {
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                        <a
-                            href="/"
-                            style={{
-                                display: 'inline-flex',
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                            }}>
-                            <MarkdownLogo fill={'white'} />
+                        <a className={classes.titleLink} href="/">
+                            <MarkdownLogo className={classes.svgFillWhite} />
                             <span style={{ marginLeft: '5px' }}>Preview</span>
                         </a>
                     </Typography>
 
                     {showPreviewIcon && (
                         <ToolTip title="Preview">
-                            <IconButton
-                                onClick={props.togglePreview}
-                                style={{
-                                    marginRight: '10px',
-                                }}>
-                                <VisibilityIcon
-                                    style={{
-                                        fill: 'white',
-                                    }}
-                                />
-                            </IconButton>
+                            {!previewVisibilityState ? (
+                                <IconButton
+                                    className={classes.visibilityIconButton}
+                                    onClick={props.togglePreview}>
+                                    <VisibilityIcon
+                                        className={classes.svgFillWhite}
+                                    />
+                                </IconButton>
+                            ) : (
+                                <IconButton
+                                    className={classes.visibilityIconButton}
+                                    onClick={props.togglePreview}>
+                                    <VisibilityOffIcon
+                                        className={classes.svgFillWhite}
+                                    />
+                                </IconButton>
+                            )}
                         </ToolTip>
                     )}
 
                     <ToolTip title="Settings">
                         <IconButton
-                            onClick={handleClick}
-                            style={{
-                                padding: '0',
-                            }}>
-                            <SettingsIcon
-                                style={{
-                                    fill: 'white',
-                                }}
-                            />
+                            className={classes.settingsIconButton}
+                            onClick={handleClick}>
+                            <SettingsIcon className={classes.svgFillWhite} />
                         </IconButton>
                     </ToolTip>
 

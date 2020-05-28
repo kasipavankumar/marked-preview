@@ -1,7 +1,6 @@
-$_blockquote-primary-color: #78C0A8;
+$_blockquote-primary-color: #78c0a8;
 
 .preview {
-
     /*! See: https://codepen.io/cliftwalker/pen/XJaEXY */
     blockquote {
         font-family: var(--font-stack-regular);
@@ -16,7 +15,7 @@ $_blockquote-primary-color: #78C0A8;
         background: #ededed;
 
         &::before {
-            content: "\201C";
+            content: '\201C';
             color: $_blockquote-primary-color;
             font-family: serif;
             font-size: 4em;
@@ -26,7 +25,7 @@ $_blockquote-primary-color: #78C0A8;
         }
 
         &::after {
-            content: ''
+            content: '';
         }
 
         span {
