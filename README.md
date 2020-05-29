@@ -1,11 +1,14 @@
-# Marked Preview
+<h1 align="center">Marked Preview</h1>
+<h2 align="center">Fast & minimal markdown preview sprinkled with Material Design.</h2>
 
-## Fast & minimal markdown preview sprinkled with Material Design.
+<div align="center">
 
-[![Edit on Codesandbox](https://img.shields.io/badge/Play%20-Codesandbox-black?style=for-the-badge&logo=codesandbox)](https://codesandbox.io/s/1ekvy)
-[![Frontend Library](https://img.shields.io/badge/Frontend%20Library-Material%20UI-success?style=for-the-badge&logo=material-ui)](https://material-ui.com/)
-[![Core Package](https://img.shields.io/badge/Core%20Package-Marked-important?style=for-the-badge&logo=markdown)](https://marked.js.org/)
-[![Code Style](https://img.shields.io/badge/Code%20Style-Prettier-informational?style=for-the-badge&logo=prettier)](https://prettier.io/)
+[![Edit on Codesandbox](https://img.shields.io/badge/Play%20-Codesandbox-black?style=flat-logo&logo=codesandbox)](https://codesandbox.io/s/1ekvy)
+[![Frontend Library](https://img.shields.io/badge/Frontend%20Library-Material%20UI-success?style=flat-logo&logo=material-ui)](https://material-ui.com/)
+[![Core Package](https://img.shields.io/badge/Core%20Package-Marked-important?style=flat-logo&logo=markdown)](https://marked.js.org/)
+[![Code Style](https://img.shields.io/badge/Code%20Style-Prettier-informational?style=flat-logo&logo=prettier)](https://prettier.io/)
+
+</div>
 
 ## How to use?
 
@@ -15,7 +18,7 @@
 4. Start typing markdown of your choice.
 5. Get instant preview on the right as you type.
 
-_HINT: Clear editor using provided option in the settings menu which is accessible on the top right corner._
+_HINT: You can use the 'Clear Editor' option provided in the settings menu._
 
 ## How to utilize the source code?
 
@@ -52,4 +55,4 @@ Start coding.
 
 Contributions are welcomed.
 
-If you have any suggestions or found any bugs? [File an issue](https://github.com/code-plus-coffee/marked-preview/issues/).
+If you have any suggestions or find any bugs, [please file an issue](https://github.com/code-plus-coffee/marked-preview/issues/).
