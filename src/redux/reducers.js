@@ -16,6 +16,8 @@ const initialEditorState = {
 export const editor = (state = initialEditorState, action) => {
     switch (action.type) {
         case CLEAR_EDITOR:
+            localStorage.setItem('editorContent', JSON.stringify(''))
+
             return Object.assign({}, state, {
                 content: '',
             })
