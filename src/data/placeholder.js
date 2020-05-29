@@ -14,9 +14,9 @@ const currentYear = new Date().getFullYear()
 /**
  * Default placeholder text shown on the first visit of the site.
  */
-export const placeholderText = `# 👋, Welcome to Markdown Preview
+export const placeholderText = `# 👋, Welcome to Marked Preview
 
-## Get instant preview of what you type in the editor. ⚡
+## Get instant preview of the markdown you type in the editor. ⚡
 
 That being said, [Undesign](https://undesign.learn.uno/) is a place where you can find intriguing developer resources.
 

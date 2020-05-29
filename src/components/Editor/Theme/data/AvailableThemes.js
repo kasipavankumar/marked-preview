@@ -12,7 +12,7 @@ export const themes = [
     'Dawn',
     'Dracula',
     'Dreamweaver',
-    'Eclispe',
+    'Eclipse',
     'Github',
     'Gob',
     'Gruvbox',
