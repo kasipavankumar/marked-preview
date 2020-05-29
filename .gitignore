@@ -1,3 +1,5 @@
+deploy.sh
+
 # dependencies
 /node_modules
 /.pnp
