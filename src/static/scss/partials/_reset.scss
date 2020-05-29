@@ -45,7 +45,7 @@ script,
 iframe,
 hr,
 address {
-    @include spacing.margin-reset(0, 0, 1.45rem, 0);
+    @include spacing.margin-reset(0, 0, 1rem, 0);
     @include spacing.padding-reset(0, 0, 0, 0);
 }
 

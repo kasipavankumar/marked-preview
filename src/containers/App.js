@@ -1,5 +1,6 @@
 import React, { Fragment, lazy, Suspense } from 'react'
 import PropTypes from 'prop-types'
+import 'lazysizes'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'

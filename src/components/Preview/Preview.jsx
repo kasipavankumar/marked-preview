@@ -52,6 +52,16 @@ const PreviewMain = (props) => {
         return <EmptyPreviewIllustration />
     }
 
+    const renderer = {
+        image(href, title, text) {
+            return `
+                <img data-src="${href}" class="lazyload" alt="${text}" />
+            `
+        },
+    }
+
+    marked.use({ renderer })
+
     return (
         <Fragment>
             <div
