@@ -5,6 +5,7 @@ import {
     CHANGE_EDITOR_CONTENT,
     CHANGE_PREVIEW_CONTENT,
     TOGGLE_PREVIEW,
+    INITIALIZE_EDITOR,
 } from './constants'
 
 const initialEditorState = {
@@ -15,6 +16,13 @@ const initialEditorState = {
 
 export const editor = (state = initialEditorState, action) => {
     switch (action.type) {
+        case INITIALIZE_EDITOR:
+            localStorage.setItem(
+                'editorContent',
+                JSON.stringify(placeholderText)
+            )
+
+            return Object.assign({}, state, {})
         case CLEAR_EDITOR:
             localStorage.setItem('editorContent', JSON.stringify(''))
 

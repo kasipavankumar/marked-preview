@@ -4,7 +4,11 @@ import { connect } from 'react-redux'
 import AceEditor from 'react-ace'
 
 // Redux.
-import { setEditorContent, setPreviewContent } from '../../redux/actions'
+import {
+    initializeEditor,
+    setEditorContent,
+    setPreviewContent,
+} from '../../redux/actions'
 
 // Placeholder text.
 import { placeholderText } from '../../data/placeholder'
@@ -61,6 +65,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        onInitializeEditor: () => dispatch(initializeEditor()),
         onEditorChange: (value) => dispatch(setEditorContent(value)),
         setPreviewContent: (event) =>
             dispatch(setPreviewContent(event.target.value)),
@@ -101,6 +106,10 @@ class Editor extends Component {
     }
 
     componentDidMount() {
+        if (!JSON.parse(localStorage.getItem('editorContent'))) {
+            this.props.onInitializeEditor()
+        }
+
         this.setState({
             editorContent: this.props.editorBodyContent,
         })

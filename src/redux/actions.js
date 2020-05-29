@@ -4,7 +4,13 @@ import {
     CHANGE_PREVIEW_CONTENT,
     CLEAR_EDITOR,
     TOGGLE_PREVIEW,
+    INITIALIZE_EDITOR,
 } from './constants'
+
+/**
+ * Action to initialize the editor.
+ */
+export const initializeEditor = () => ({ type: INITIALIZE_EDITOR })
 
 /**
  * Action to clear the editor content.
