@@ -1,7 +1,11 @@
+@use './mixins';
+
 $_blockquote-primary-color: #78c0a8;
 
 .preview {
-    /*! See: https://codepen.io/cliftwalker/pen/XJaEXY */
+    @include mixins.links;
+
+    // See: https://codepen.io/cliftwalker/pen/XJaEXY
     blockquote {
         font-family: var(--font-stack-regular);
         font-size: 125%;

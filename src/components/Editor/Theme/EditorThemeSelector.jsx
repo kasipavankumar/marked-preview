@@ -72,7 +72,9 @@ const ThemeSelectorDialog = (props) => {
                 <Button color="primary" onClick={handleClose}>
                     Cancel
                 </Button>
-                <Button color="primary" onClick={() => handleEditorThemeChange()}>
+                <Button
+                    color="primary"
+                    onClick={() => handleEditorThemeChange()}>
                     Save
                 </Button>
             </DialogActions>

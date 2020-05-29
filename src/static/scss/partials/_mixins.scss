@@ -1,0 +1,39 @@
+// Mixin to apply flex.
+@mixin flex(
+    $direction: row,
+    $align_items: flex-start,
+    $justify_content: flex-start,
+    $grow: null,
+    $wrap: null
+) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align_items;
+    justify-content: $justify_content;
+    flex-grow: $grow;
+    flex-wrap: $wrap;
+}
+
+// Mixin to provide styles to links <a>.
+@mixin links {
+    $_linear_gradient_color1: rgb(8, 184, 238);
+    $_linear_gradient_color2: rgb(51, 68, 197);
+
+    a {
+        text-decoration: none;
+        background: linear-gradient(
+            to right,
+            #{$_linear_gradient_color1},
+            #{$_linear_gradient_color2}
+        );
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        box-decoration-break: clone;
+        box-shadow: 0 1px 0 0 #{$_linear_gradient_color2};
+
+        &:hover {
+            box-shadow: none;
+        }
+    }
+}

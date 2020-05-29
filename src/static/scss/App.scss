@@ -2,46 +2,27 @@
 @use './Editor.scss';
 @use './Preview.scss';
 
-.title {
-    margin: 1rem;
-}
-
 .App {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     height: 100%;
     width: 100%;
+}
 
-    a {
-        text-decoration: none;
-        color: black;
-        box-shadow: 0 1px 0 0 #222;
-
-        &:hover {
-            box-shadow: none;
-        }
+@media screen and (max-width: 620px) {
+    .App {
+        display: block;
     }
 }
 
-img {
-    object-fit: cover;
-    width: 100%;
-}
-
-// @media screen and (max-width: 620px) {
+// @media screen and (min-width: 600px) {
 //     .App {
-//         display: block;
+//         height: calc(100vh - 64px);
 //     }
 // }
 
-@media screen and (min-width: 600px) {
-    .App {
-        height: calc(100vh - 64px);
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .App {
-        height: calc(100vh - 56px);
-    }
-}
+// @media screen and (max-width: 600px) {
+//     .App {
+//         height: calc(100vh - 56px);
+//     }
+// }

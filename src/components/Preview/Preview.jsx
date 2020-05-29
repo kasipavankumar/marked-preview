@@ -39,9 +39,10 @@ Preview.propTypes = {
 
 const PreviewMain = (props) => {
     const { isMq, show, isContentEmpty, previewContent, content } = props
-    const previewDesktop = show && !isContentEmpty && !isMq && `preview__desktop`
+    const previewDesktop = !isContentEmpty && !isMq && `preview__desktop`
     const previewMobile = show && !isContentEmpty && isMq && `preview__mobile`
-    const previewClasses = `preview ${previewDesktop} ${previewMobile}`
+    const showPreview = !show && isMq && `preview__display_none`
+    const previewClasses = `preview ${previewDesktop} ${previewMobile} ${showPreview}`
 
     if (isContentEmpty) {
         if (isMq) {
@@ -96,7 +97,7 @@ PreviewMain.propTypes = {
  * Displays an illustration when there is no content in the editor.
  */
 const EmptyPreviewIllustration = () => (
-    <div className="preview preview__empty">
+    <div className="preview preview__empty preview__fade_in">
         <img src={EmptyPreview} alt="Editor has no content." />
         <Typography variant="h6" color="primary">
             {/* Nothing to preview. <br /> Add something to the editor. */}

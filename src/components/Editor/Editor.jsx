@@ -129,7 +129,7 @@ class Editor extends Component {
                 />
 
                 <AceEditor
-                    fontSize={12.5}
+                    fontSize={13}
                     mode="markdown"
                     name="editor"
                     theme={this.props.editorTheme}

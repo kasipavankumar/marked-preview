@@ -1,0 +1,36 @@
+@mixin mdc_font(
+    $size: null,
+    $weight: null,
+    $letter_spacing: $null
+) {
+    font-family: var(--font-stack-regular);
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter_spacing;
+}
+
+@mixin reset {
+    h1 {
+        @include mdc_font(96px, lighter, -1.5px);
+    }
+
+    h2 {
+        @include mdc_font(60px, lighter, -0.5px);
+    }
+
+    h3 {
+        @include mdc_font(48px, normal, 0px);
+    }
+
+    h4 {
+        @include mdc_font(34px, normal, 0.25px);
+    }
+
+    h5 {
+        @include mdc_font(24px, normal, 0px);
+    }
+
+    h6 {
+        @include mdc_font(20px, medium, 0.15px);
+    }
+}

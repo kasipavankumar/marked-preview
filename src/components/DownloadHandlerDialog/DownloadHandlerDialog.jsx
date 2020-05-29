@@ -86,8 +86,8 @@ const DownloadHandlerDialog = (props) => {
                         Provide a name for the file to be downloaded.
                     </DialogContentText>
                     <DialogContentText>
-                        For example, "Awesome Markdown" will result in a download of
-                        "Awesome Markdown.md"
+                        For example, "Awesome Markdown" will result in a
+                        download of "Awesome Markdown.md"
                     </DialogContentText>
                     <TextField
                         required

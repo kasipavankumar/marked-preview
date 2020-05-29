@@ -100,7 +100,9 @@ const Navbar = (props) => {
     const [themeSelectedValue, setThemeSelectedValue] = useState('')
 
     /** Download handle dialog open status */
-    const [downloadDialogOpenStatus, setDownloadDialogOpenStatus] = useState(false)
+    const [downloadDialogOpenStatus, setDownloadDialogOpenStatus] = useState(
+        false
+    )
 
     const handleClick = (event) => {
         setAnchorElement(event.currentTarget)
@@ -136,7 +138,7 @@ const Navbar = (props) => {
 
     return (
         <div className={`${classes.root} navbar`}>
-            <AppBar position="static">
+            <AppBar position="static" elevation={0}>
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         <a className={classes.titleLink} href="/">
@@ -175,7 +177,10 @@ const Navbar = (props) => {
                         </IconButton>
                     </ToolTip>
 
-                    <Menu anchorEl={anchorElement} open={open} onClose={handleClose}>
+                    <Menu
+                        anchorEl={anchorElement}
+                        open={open}
+                        onClose={handleClose}>
                         <MenuItem onClick={handleThemeSelectorOpen}>
                             Choose Theme
                         </MenuItem>
@@ -184,7 +189,9 @@ const Navbar = (props) => {
                             Download Markdown
                         </MenuItem>
 
-                        <MenuItem onClick={handleClearEditor}>Clear Editor</MenuItem>
+                        <MenuItem onClick={handleClearEditor}>
+                            Clear Editor
+                        </MenuItem>
                     </Menu>
                 </Toolbar>
             </AppBar>

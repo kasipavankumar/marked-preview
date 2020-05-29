@@ -8,7 +8,8 @@ import {
 } from './constants'
 
 const initialEditorState = {
-    content: JSON.parse(localStorage.getItem('editorContent')) || placeholderText,
+    content:
+        JSON.parse(localStorage.getItem('editorContent')) || placeholderText,
     theme: JSON.parse(localStorage.getItem('editorTheme')) || 'iplastic',
 }
 

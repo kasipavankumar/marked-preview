@@ -1,5 +1,20 @@
+$_header_height_max_600: 56px;
+$_header_height_min_600: 64px;
+
 #editor {
-    height: 100%;
     font-family: 'IBM Plex Mono', 'Roboto Mono', 'Source Code Pro';
-    // font-size: 100%;
+    font-weight: normal;
+    letter-spacing: 0.25px;
+}
+
+@media screen and (min-width: 600px) {
+    #editor {
+        height: calc(100vh - #{$_header_height_min_600}) !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #editor {
+        height: calc(100vh - 56px) !important;
+    }
 }

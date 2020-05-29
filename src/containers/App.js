@@ -2,6 +2,7 @@ import React, { Fragment, lazy, Suspense } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
+import Skeleton from '@material-ui/lab/Skeleton'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 import Editor from '../components/Editor/Editor'
@@ -25,6 +26,14 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
         width: '100vw',
     },
+    skeletonGrid: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    },
+    skeleton: {
+        height: '100vh',
+        width: '100vw',
+    },
 }))
 
 const ShowProgress = () => {
@@ -34,6 +43,28 @@ const ShowProgress = () => {
         <div className={classes.showProgress}>
             <CircularProgress />
         </div>
+    )
+}
+
+const ShowSkeleton = () => {
+    const classes = useStyles()
+
+    return (
+        <Fragment>
+            <Skeleton animation="wave" variant="rect" height={'56px'} />
+            <div className={classes.skeletonGrid}>
+                <Skeleton
+                    animation="wave"
+                    className={classes.skeleton}
+                    variant="rect"
+                />
+                <Skeleton
+                    animation="wave"
+                    className={classes.skeleton}
+                    variant="rect"
+                />
+            </div>
+        </Fragment>
     )
 }
 
