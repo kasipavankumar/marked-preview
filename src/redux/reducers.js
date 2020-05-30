@@ -8,12 +8,14 @@ import {
     INITIALIZE_EDITOR,
 } from './constants'
 
+/** Global state object for editor. */
 const initialEditorState = {
     content:
         JSON.parse(localStorage.getItem('editorContent')) || placeholderText,
     theme: JSON.parse(localStorage.getItem('editorTheme')) || 'iplastic',
 }
 
+/** Reducers to manage editor state. */
 export const editor = (state = initialEditorState, action) => {
     switch (action.type) {
         case INITIALIZE_EDITOR:
@@ -42,11 +44,13 @@ export const editor = (state = initialEditorState, action) => {
     }
 }
 
+/** Global state object for preview. */
 const initialPreviewState = {
     show: false,
     content: placeholderText,
 }
 
+/** Reducers to manage preview state. */
 export const preview = (state = initialPreviewState, action) => {
     switch (action.type) {
         case TOGGLE_PREVIEW:

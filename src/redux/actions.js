@@ -7,14 +7,10 @@ import {
     INITIALIZE_EDITOR,
 } from './constants'
 
-/**
- * Action to initialize the editor.
- */
+/** Action to initialize the editor. */
 export const initializeEditor = () => ({ type: INITIALIZE_EDITOR })
 
-/**
- * Action to clear the editor content.
- */
+/** Action to clear the editor content. */
 export const clearEditor = () => ({ type: CLEAR_EDITOR })
 
 /**
@@ -30,6 +26,7 @@ export const setEditorContent = (text) => {
     }
 }
 
+/** Action to set preview content on change. */
 export const setPreviewContent = (text) => {
     return {
         type: CHANGE_PREVIEW_CONTENT,
@@ -37,18 +34,14 @@ export const setPreviewContent = (text) => {
     }
 }
 
-/**
- * Action to toggle preview on smaller screens.
- */
+/** Action to toggle preview on smaller screens. */
 export const togglePreview = () => {
     return {
         type: TOGGLE_PREVIEW,
     }
 }
 
-/**
- * Action to change editor theme.
- */
+/** Action to change editor theme. */
 export const changeEditorTheme = (theme) => {
     localStorage.setItem('editorTheme', JSON.stringify(theme))
 
