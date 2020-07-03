@@ -27,6 +27,7 @@ const mapStateToProps = (state) => {
 const renderer = new marked.Renderer()
 
 renderer.table = (header, body) => {
+    // eslint-disable-next-line no-unused-vars
     const htmlString = ReactDOMServer.renderToString(
         <TableContainer>
             <Table>

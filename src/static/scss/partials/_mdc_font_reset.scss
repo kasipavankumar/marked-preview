@@ -1,8 +1,4 @@
-@mixin mdc_font(
-    $size: null,
-    $weight: null,
-    $letter_spacing: $null
-) {
+@mixin mdc_font($size: null, $weight: null, $letter_spacing: $null) {
     font-family: var(--font-stack-regular);
     font-size: $size;
     font-weight: $weight;
