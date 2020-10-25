@@ -19,7 +19,7 @@
         "react-scripts": "3.4.1",
         "redux": "^4.0.5",
         "redux-logger": "^3.0.6",
-        "sass": "^1.26.7"
+        "sass": "^1.27.0"
     },
     "scripts": {
         "start": "react-scripts start",
