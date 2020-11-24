@@ -1,6 +1,8 @@
 {
-    "name": "markdown-preview",
+    "name": "markedpreview",
     "version": "1.1.0",
+    "author": "Kasi Pavan Kumar <kasipavankumar>",
+    "license": "MIT",
     "private": true,
     "dependencies": {
         "@material-ui/core": "^4.10.0",
@@ -27,7 +29,7 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "format": "prettier --write \"**/*.{js,jsx,json,scss}\"",
-        "deploy-script": "bash deploy.sh"
+        "deploy": "bash deploy.sh"
     },
     "eslintConfig": {
         "extends": "react-app"
