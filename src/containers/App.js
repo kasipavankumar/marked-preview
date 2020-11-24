@@ -7,6 +7,7 @@ import Skeleton from '@material-ui/lab/Skeleton'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 import Editor from '../components/Editor/Editor'
+import SEO from '../components/SEO'
 
 import '../static/scss/App.scss'
 
@@ -72,6 +73,7 @@ const ShowSkeleton = () => {
 
 const App = (props) => (
     <Fragment>
+        <SEO />
         <Suspense fallback={<ShowProgress />}>
             <Navbar />
             <div className="App">
