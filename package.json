@@ -13,7 +13,7 @@
         "@testing-library/user-event": "^12.5.0",
         "dompurify": "^2.2.2",
         "lazysizes": "^5.2.2",
-        "marked": "^1.2.5",
+        "marked": "^1.2.6",
         "react": "^16.14.0",
         "react-ace": "^9.2.0",
         "react-dom": "^16.14.0",
