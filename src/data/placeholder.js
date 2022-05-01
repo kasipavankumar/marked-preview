@@ -1,12 +1,17 @@
-import { motivationalQuotes } from './quotes.json'
+import quotes from './quotes.json'
 
 /**
  * Quotes sourced from
  * {@link https://github.com/freeCodeCamp/freeCodeCamp/blob/master/client/src/utils/words.json freeCodeCamp's Repository}.
  * @returns a random quote.
  */
-const getRandomQuote = () =>
-    motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)]
+const getRandomQuote = () => {
+    const motivationalQuotes = quotes.motivationalQuotes
+
+    return motivationalQuotes[
+        Math.floor(Math.random() * motivationalQuotes.length)
+    ]
+}
 
 const randomQuote = getRandomQuote()
 const currentYear = new Date().getFullYear()
@@ -50,5 +55,5 @@ An image that can be your next wallpaper. 📷
 
 You can take a look at the source code over at [Github](https://github.com/kasipavankumar/marked-preview) or maybe, play around with the code on [Codesandbox](https://codesandbox.io/s/1ekvy).
 
-**Code Plus Coffee • ${currentYear}**
+**DKP. Kumar • ${currentYear}**
 `
