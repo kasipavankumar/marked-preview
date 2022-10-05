@@ -1,4 +1,5 @@
 import Helmet from 'react-helmet'
+import project from '../../package.json'
 
 const SEO = () => {
     const seo = Object.freeze({
@@ -26,7 +27,7 @@ const SEO = () => {
                     href: 'https://fonts.gstatic.com',
                 },
             ]}>
-            <html key="base-html" lang="en" dir="ltr" />
+            <html key="base-html" lang="en" dir="ltr" app-version={project.version} />
             <meta name="robots" content="index, follow" />
             <meta name="description" content={seo.description} />
             <meta name="image" content={seo.image} />
