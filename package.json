@@ -48,6 +48,6 @@
         "@testing-library/user-event": "^14.4.3",
         "prettier": "^2.4.0",
         "redux-logger": "^3.0.6",
-        "sass": "^1.55.0"
+        "sass": "^1.56.1"
     }
 }
